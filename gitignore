@@ -1,0 +1,28 @@
+# 1. Ambientes Virtuais (Pastas gigantes que o Python usa para instalar bibliotecas locais)
+.phishvenv/
+venv/
+env/
+ENV/
+
+# 2. Caches do Python e do Streamlit (Arquivos temporários criados quando você roda o site)
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.pytest_cache/
+.streamlit/runtime/
+
+# 3. Arquivos de Sistema (Lixos visuais que o Windows ou Mac criam sozinhos)
+Thumbs.db
+.DS_Store
+
+# 4. Dados e Históricos de Banco de Dados (Evita expor dados de consultas ou logs privados)
+data/historico_consultas.csv
+*.log
+
+# 5. Modelos Grandes (Opcional - se os seus arquivos .pkl forem maiores que 50MB)
+# artefatos/*.pkl
+
+.phishvenv/
+.phishvenvl/
+__pycache__/

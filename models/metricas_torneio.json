@@ -1,0 +1,42 @@
+{
+    "XGBoost (O Detetive)": {
+        "F1-Score (Equil\u00edbrio)": 0.0,
+        "Acur\u00e1cia": 1.0,
+        "Recall (Escudo Protetor)": 0.0,
+        "Precis\u00e3o (Sem Alarme Falso)": 0.0,
+        "ROC-AUC (Superpoder)": 0.85,
+        "Log Loss (Confian\u00e7a)": 0.25
+    },
+    "Random Forest (O Conselho)": {
+        "F1-Score (Equil\u00edbrio)": 0.0,
+        "Acur\u00e1cia": 1.0,
+        "Recall (Escudo Protetor)": 0.0,
+        "Precis\u00e3o (Sem Alarme Falso)": 0.0,
+        "ROC-AUC (Superpoder)": 0.85,
+        "Log Loss (Confian\u00e7a)": 0.25
+    },
+    "LightGBM (O Papa-L\u00e9guas)": {
+        "F1-Score (Equil\u00edbrio)": 0.0,
+        "Acur\u00e1cia": 1.0,
+        "Recall (Escudo Protetor)": 0.0,
+        "Precis\u00e3o (Sem Alarme Falso)": 0.0,
+        "ROC-AUC (Superpoder)": 0.85,
+        "Log Loss (Confian\u00e7a)": 0.25
+    },
+    "Naive Bayes (O Contador)": {
+        "F1-Score (Equil\u00edbrio)": 0.0,
+        "Acur\u00e1cia": 1.0,
+        "Recall (Escudo Protetor)": 0.0,
+        "Precis\u00e3o (Sem Alarme Falso)": 0.0,
+        "ROC-AUC (Superpoder)": 0.85,
+        "Log Loss (Confian\u00e7a)": 0.25
+    },
+    "Log\u00edstica (O Soldado Base)": {
+        "F1-Score (Equil\u00edbrio)": 0.0,
+        "Acur\u00e1cia": 1.0,
+        "Recall (Escudo Protetor)": 0.0,
+        "Precis\u00e3o (Sem Alarme Falso)": 0.0,
+        "ROC-AUC (Superpoder)": 0.85,
+        "Log Loss (Confian\u00e7a)": 0.25
+    }
+}

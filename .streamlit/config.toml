@@ -1,0 +1,5 @@
+[theme]
+primaryColor = "#A50034" # Vermelho LG
+backgroundColor = "#F4F4F4" # Fundo Claro Harmônico
+secondaryBackgroundColor = "#E0E0E0" # Navbar Lateral
+textColor = "#222222" # Texto visível
