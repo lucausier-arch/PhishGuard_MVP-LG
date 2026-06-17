@@ -1,41 +1,51 @@
 # -*- coding: utf-8 -*-
+"""
+🛡️ MVP PHISHGUARD - PIPELINE DE EXTRAÇÃO E SANITIZAÇÃO COMPLETA
+LG Electronics Security Team | Rigor Metodológico com 87 Critérios Numéricos
+"""
+
 import os
-import joblib
+import warnings
 import pandas as pd
-import numpy as np
-from sklearn.model_selection import train_test_split
-from sklearn.preprocessing import StandardScaler
+
+warnings.filterwarnings("ignore", category=UserWarning)
+
+print("⚡ [T1] Inicializando o pipeline de limpeza estrutural dos critérios...")
 
 DIRETORIO_ATUAL = os.path.dirname(os.path.abspath(__file__))
 RAIZ_PROJETO = os.path.dirname(DIRETORIO_ATUAL)
 PASTA_DATA = os.path.join(RAIZ_PROJETO, "data")
-PASTA_MODELS = os.path.join(RAIZ_PROJETO, "models")
-os.makedirs(PASTA_MODELS, exist_ok=True)
+caminho_bruto = os.path.join(PASTA_DATA, "dataset_1_aprendizado_completo.csv")
 
-print("⚡ [T1] Iniciando saneamento absoluto...")
+if not os.path.exists(caminho_bruto):
+    raise FileNotFoundError(f"⚠️ Planilha de aprendizado não localizada em: {caminho_bruto}")
 
-caminho_csv = os.path.join(PASTA_DATA, "dataset_phishing.csv")
-df = pd.read_csv(caminho_csv, on_bad_lines='skip', engine='python')
-df.columns = [c.split(';')[0].strip() for c in df.columns]
+# Leitura tratando linhas instáveis ou delimitadores extras do Excel
+df = pd.read_csv(caminho_bruto, on_bad_lines='skip')
 
-# CORREÇÃO DA MÁSCARA: Garante que o target capture Phishing (1) e Legítimo (0) equilibrados
-if 'status' in df.columns:
-    df['target'] = df['status'].apply(lambda x: 1 if str(x).lower().strip() == 'phishing' else 0)
-else:
-    # Cria uma distribuição balanceada real baseada no tamanho da URL caso a coluna suma
-    df['target'] = (df['length_url'] > df['length_url'].median()).astype(int)
+# Remove colunas fantasmas que o Excel cria ao final da planilha
+df = df.loc[:, ~df.columns.str.contains('^unnamed', case=False)]
 
-X = df.select_dtypes(include=[np.number]).drop(columns=['target', 'target_num'], errors='ignore')
-y = df['target']
-colunas_modelo = list(X.columns)
+# Padroniza rigorosamente o nome de todas as colunas para letras minúsculas
+df.columns = [str(c).split(';')[0].strip().lower() for c in df.columns]
 
-# Divisão limpa sem quebras
-X_dev, X_test, y_dev, y_test = train_test_split(X, y, test_size=0.15, random_state=42)
-X_train, X_val, y_train, y_val = train_test_split(X_dev, y_dev, test_size=0.1765, random_state=42)
+# Identifica a coluna alvo (status/gabarito)
+coluna_alvo = [c for c in df.columns if 'status' in c or 'label' in c or 'target' in c][-1]
 
-scaler = StandardScaler()
-X_train_scaled = scaler.fit_transform(X_train)
+# REMOÇÃO DE VALORES NULOS: Remove linhas onde a URL ou o Status estejam vazios
+df = df.dropna(subset=['url', list(df.columns)[-1]])
 
-joblib.dump(scaler, os.path.join(PASTA_MODELS, "scaler_phishguard.pkl"))
-joblib.dump(colunas_modelo, os.path.join(PASTA_MODELS, "colunas_referencia.pkl"))
-print("🏁 [T1] SUCESSO! Base balanceada gerada.")
+# Converte o status em bit puro (1 para Phishing, 0 para Veridico)
+df[coluna_alvo] = df[coluna_alvo].astype(str).apply(
+    lambda x: 1 if 'phish' in x.lower() or '1' in x.lower() else 0
+)
+
+# Coerção de tipos: Garante que todos os 87 critérios numéricos sejam inteiros limpos e sem NaNs
+colunas_numericas = df.columns.drop(['url', coluna_alvo])
+for col in colunas_numericas:
+    df[col] = pd.to_numeric(df[col], errors='coerce').fillna(0).astype(int)
+
+# Sobrescreve salvando a base 100% higienizada com todas as propriedades preservadas
+df.to_csv(caminho_bruto, index=False)
+
+print(f"🏁 [T1] SUCESSO! Planilha de aprendizado limpa. Formato atual: {df.shape[1]} colunas estruturadas.")

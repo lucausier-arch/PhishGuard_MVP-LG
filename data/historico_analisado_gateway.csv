@@ -1,0 +1,25 @@
+url,probabilidade_phishing,veredito,data_analise
+google.com,0.16734059871818133,Veridico,2026-06-16 12:26:16
+googIe.com,0.16734059871818133,Veridico,2026-06-16 12:26:30
+googIe.com,0.16734059871818133,Veridico,2026-06-16 12:26:34
+googIe.com,0.16734059871818133,Veridico,2026-06-16 12:26:36
+googIe.com,0.16734059871818133,Veridico,2026-06-16 12:26:55
+https://www.google.com/,0.39061713664272063,Veridico,2026-06-16 12:35:04
+https://www.googIe.com/,0.22090010441961555,Veridico,2026-06-16 12:35:21
+https://www.googIe.com/,0.22090010441961555,Veridico,2026-06-16 12:35:23
+https://login.Ige.com/auth/signin,0.8920134175653244,Phishing,2026-06-16 12:39:07
+google.com,0.2862406457775373,Veridico,2026-06-16 12:39:27
+google.com,0.2862406457775373,Veridico,2026-06-16 12:50:20
+https://login.Ige.com/auth/signin,0.8920134175653244,Phishing,2026-06-16 12:50:36
+https://login.Ige.com/auth/signin,0.8237663850787492,Veridico,2026-06-16 12:51:31
+https://login.Ige.com/auth/signin,0.8237663850787492,Veridico,2026-06-16 12:51:48
+https://login.Ige.com/auth/signin,0.8237663850787492,Veridico,2026-06-16 12:51:54
+https://login.Ige.com/auth/signin,0.8237663850787492,Veridico,2026-06-16 12:51:59
+https://login.Ige.com/auth/signin,0.8237663850787492,Veridico,2026-06-16 12:52:07
+https://login.Ige.com/auth/signin,0.8920134175653244,Phishing,2026-06-16 12:52:34
+google.com,0.3475026575928694,Veridico,2026-06-16 20:46:21
+fgbigbifgguhghu,0.3596608828893671,Veridico,2026-06-16 20:46:28
+gbigbsifbgursg,0.11077481464789773,Veridico,2026-06-16 20:46:46
+google.com,0.2862406457775373,Veridico,2026-06-16 20:56:26
+https://login.Ige.com/auth/signin,0.8920134175653244,Phishing,2026-06-16 20:56:31
+https://login.Ige.com/auth/signin,0.8237663850787492,Veridico,2026-06-16 20:58:08
